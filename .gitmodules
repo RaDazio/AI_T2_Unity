@@ -1,0 +1,3 @@
+[submodule "Assets/Resources/PrologFiles"]
+	path = Assets/Resources/PrologFiles
+	url = https://github.com/RaDazio/AI_T2.git
