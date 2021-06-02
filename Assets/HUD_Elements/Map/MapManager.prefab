@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5991111769076422788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5991111769076422790}
+  - component: {fileID: 5991111769076422791}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: MapManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5991111769076422790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991111769076422788}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5991111769076422791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991111769076422788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c040fa65bdb03f44c813517751bbd69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mappingData:
+  - character: 46
+    useRandom: 0
+    prefabs:
+    - {fileID: 5803218948704432905, guid: f457dd5d6849f9646a59952c85be8e7b, type: 3}
+  - character: 100
+    useRandom: 0
+    prefabs:
+    - {fileID: 7344442435474382845, guid: 9fbaafc494fbbc94abf5bb476dacb163, type: 3}
+  - character: 68
+    useRandom: 0
+    prefabs:
+    - {fileID: 6940846949334987656, guid: cb8434a04cbf108429d6feadaf355d74, type: 3}
+  - character: 80
+    useRandom: 0
+    prefabs:
+    - {fileID: 5848457207412355941, guid: 079a73f0eb473024ebe6b971b5891e24, type: 3}
+  - character: 84
+    useRandom: 0
+    prefabs:
+    - {fileID: 49279379988238176, guid: f91f90ff8dfccbe41ad822daac792b99, type: 3}
+  - character: 79
+    useRandom: 0
+    prefabs:
+    - {fileID: 2878033411597091976, guid: cde5e2e25f8f1e449b4f1a3fb850f248, type: 3}
+  - character: 85
+    useRandom: 0
+    prefabs:
+    - {fileID: 7653974764655408717, guid: 69b7a013ea95f614fb5ef620deb41ea9, type: 3}
+  - character: 88
+    useRandom: 0
+    prefabs:
+    - {fileID: 5803218948704432905, guid: f457dd5d6849f9646a59952c85be8e7b, type: 3}
+  mapText: {fileID: 4900000, guid: 8d21e92fddd4d97469924d6ff9704366, type: 3}
+  spawnChar: 88
+  fogTile: {fileID: 4736627860622571951, guid: b3318b1dd9d4672448ac83da1eb431c5, type: 3}
