@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Text.RegularExpressions;
 using System;
+using System.IO;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -54,11 +55,6 @@ public class TextToMap : MonoBehaviour
     public char spawnChar;
 
     public GameObject fogTile;
-
-    // Path tiles
-    //public GameObject pathTile;
-    //public GameObject openTile;
-    //public GameObject closedTile;
    
     // String to map representation
     string[] rows;
@@ -66,20 +62,12 @@ public class TextToMap : MonoBehaviour
     // Variables to turn off and on path tiles
 
     System.Random rnd = new RandomProportional();
+
+    public Vector2 mapTranformation;
  
     void OnEnable()
     {
-        if(MapConfigurations.Map!= null)
-        {
-            Debug.Log("New Map!!");
-            rows = Regex.Split(MapConfigurations.Map,"\r\n|\r|\n");
-        }
-        else
-        {
-            rows = Regex.Split(mapText.text, "\r\n|\r|\n");
-        }
-        
-       // Gyms = LoadGyms();
+
         AllMapTiles = new Dictionary<Vector2, List<GameObject>>();
         KnowTiles = new Dictionary<Vector2, List<GameObject>>();
         FogTiles = new Dictionary<Vector2, GameObject>();
@@ -87,7 +75,6 @@ public class TextToMap : MonoBehaviour
         GenerateMap();
 
         GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().instantiateProlog();
-        Debug.Log(GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().getStringUpdate());
     }
 
     public void clearTile(Vector2 position)
@@ -236,6 +223,7 @@ public class TextToMap : MonoBehaviour
             Dictionary<Vector2, char> sortedTiles = new Dictionary<Vector2, char>();
 
             string newmap = string.Empty;
+            string prologmap = string.Empty;
 
             string possiblevalues = ""+smallEnemyChar+bigEnemyChar+holeChar+teleporterChar+powerUpChar+goldChar;
             
@@ -281,6 +269,7 @@ public class TextToMap : MonoBehaviour
             for(int j = YSize-1; j>=0; j--)
             {
                 newmap+=leftSide;
+                prologmap+="'";
                 for(int i = 0; i < XSize ; i++)
                 {
 
@@ -296,14 +285,26 @@ public class TextToMap : MonoBehaviour
                         sortedTiles.Add(position, aux);
                     }
                     newmap+=aux;
+                    prologmap+=aux;
                 }
                 newmap+=rightSide;
+                prologmap+="'.\n";
             }      
             newmap = header+'\n'+newmap+footer;
+
+            StreamWriter writer = new StreamWriter("Assets/Resources/PrologFiles/map.txt",false);
+            writer.Write(prologmap);
+            writer.Close();          
+
+
             rows = Regex.Split(newmap,"\r\n|\r|\n");
         }
-        Vector2 currentPosition = new Vector2(0, 0);
+        else
+        {
+            rows = Regex.Split(mapText.text, "\r\n|\r|\n");
+        }
 
+        Vector2 currentPosition = new Vector2(0, 0);
         foreach (string row in rows)
         {
             foreach (char c in row)

@@ -19,7 +19,7 @@ public class PrologProcess
         
         prologProcess.StartInfo.FileName = "swipl";
         prologProcess.StartInfo.Arguments = apiPath;
-        prologProcess.StartInfo.RedirectStandardInput = true;
+        prologProcess.StartInfo.RedirectStandardInput = true; 
         prologProcess.StartInfo.RedirectStandardOutput = true;
         prologProcess.StartInfo.UseShellExecute = false;
 
@@ -30,12 +30,12 @@ public class PrologProcess
 
     }
 
-    public void WriteInput(string text)
+    private void WriteInput(string text)
     {
         writer.WriteLine(text);
     }
 
-    public string GetOutput()
+    private string GetOutput()
     {
         string text = String.Empty;
         string line= "";
@@ -45,7 +45,14 @@ public class PrologProcess
             text+=line;
         }while(line!= null && line!="");
         
-        UnityEngine.Debug.Log(text);
         return text;
     }
+
+    public string RunCommand(string text)
+    {
+        UnityEngine.Debug.Log(text);
+        WriteInput(text);
+        return GetOutput();
+    }
+
 }

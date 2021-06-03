@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
         GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>().revealTile(spawn);
 
         GameObject.FindGameObjectWithTag("HUD_LOG").GetComponent<TextSetter>().setText("Teste");
+
+        Debug.Log(GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand("loop."));
     }
 
     // Update is called once per frame
@@ -51,6 +53,16 @@ public class PlayerMovement : MonoBehaviour
             if(Input.GetKey(KeyCode.D))
             {
                 TriggerMovement(Vector3.right);
+            }
+            if(Input.GetKeyUp(KeyCode.Space))
+            {
+                Debug.Log(GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand("move."));
+                Vector2 newPrologPosition = GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().getPrologPlayerPosition();
+                Vector2 MapTransformation = GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>().getSpawnPoint();
+                Debug.Log(new Vector2(newPrologPosition.x-1 + MapTransformation.x, MapTransformation.y-1 + newPrologPosition.y));
+                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().updateUI();
+
+                TriggerMovement(Vector3.up);
             }
         }
 
@@ -115,6 +127,8 @@ public class PlayerMovement : MonoBehaviour
 
         origPos = transform.position;
         targetPos = origPos + direction;
+
+        Debug.Log(targetPos);
 
         var MapManager = GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>();
 

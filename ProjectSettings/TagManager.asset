@@ -9,6 +9,7 @@ TagManager:
   - HUD_ARROW
   - HUD_LOG
   - PrologController
+  - HUD_SCORE
   layers:
   - Default
   - TransparentFX
