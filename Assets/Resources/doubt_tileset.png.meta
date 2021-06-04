@@ -29,6 +29,45 @@ TextureImporter:
   - first:
       213: -3924250789123232421
     second: doubt_tileset_8
+  - first:
+      213: -6437952676715484813
+    second: doubt_tileset_9
+  - first:
+      213: 1406179428806465342
+    second: doubt_tileset_10
+  - first:
+      213: -8118782697889634093
+    second: doubt_tileset_11
+  - first:
+      213: 5146171143990527591
+    second: doubt_tileset_12
+  - first:
+      213: 4299133335300813450
+    second: doubt_tileset_13
+  - first:
+      213: -2827156496335817570
+    second: doubt_tileset_14
+  - first:
+      213: 9086896733676814875
+    second: doubt_tileset_15
+  - first:
+      213: -8843152177085015831
+    second: doubt_tileset_16
+  - first:
+      213: -3961052852944452399
+    second: doubt_tileset_17
+  - first:
+      213: -2087036040638633451
+    second: doubt_tileset_18
+  - first:
+      213: 1313711484371545233
+    second: doubt_tileset_19
+  - first:
+      213: 5552348733175973622
+    second: doubt_tileset_20
+  - first:
+      213: -2650107297418971062
+    second: doubt_tileset_21
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -122,7 +161,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 197
+        y: 288
         width: 16
         height: 16
       alignment: 0
@@ -143,7 +182,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 179
+        y: 270
         width: 16
         height: 16
       alignment: 0
@@ -164,7 +203,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 156
+        y: 247
         width: 16
         height: 16
       alignment: 0
@@ -185,7 +224,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 22
-        y: 156
+        y: 247
         width: 16
         height: 16
       alignment: 0
@@ -206,7 +245,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3
-        y: 123
+        y: 214
         width: 16
         height: 28
       alignment: 0
@@ -227,7 +266,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 21
-        y: 123
+        y: 214
         width: 16
         height: 28
       alignment: 0
@@ -248,7 +287,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 39
-        y: 123
+        y: 214
         width: 16
         height: 28
       alignment: 0
@@ -269,7 +308,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 57
-        y: 123
+        y: 214
         width: 16
         height: 28
       alignment: 0
@@ -289,8 +328,8 @@ TextureImporter:
       name: doubt_tileset_8
       rect:
         serializedVersion: 2
-        x: 4
-        y: 93
+        x: 3
+        y: 191
         width: 16
         height: 16
       alignment: 0
@@ -302,6 +341,279 @@ TextureImporter:
       bones: []
       spriteID: b5d63c8e2b24a89c0800000000000000
       internalID: -3924250789123232421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_9
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 172
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3792997762cc7a6a0800000000000000
+      internalID: -6437952676715484813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_10
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 172
+        width: 34
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3798708db0c38310800000000000000
+      internalID: 1406179428806465342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_11
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 148
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d863b3c62a445f80800000000000000
+      internalID: -8118782697889634093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_12
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 113
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 766cbeec36fda6740800000000000000
+      internalID: 5146171143990527591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_13
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 112
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8235ac9df699ab30800000000000000
+      internalID: 4299133335300813450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_14
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 112
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e94377f352ce3c8d0800000000000000
+      internalID: -2827156496335817570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_15
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 112
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b12c6715f642b1e70800000000000000
+      internalID: 9086896733676814875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_16
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 92
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e8102ea2ffc64580800000000000000
+      internalID: -8843152177085015831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 92
+        width: 34
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4c2b3ba638709c0800000000000000
+      internalID: -3961052852944452399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_18
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 72
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51aeb4457cb5903e0800000000000000
+      internalID: -2087036040638633451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_19
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 72
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19c215b72ad3b3210800000000000000
+      internalID: 1313711484371545233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_20
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 72
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f64b0651c7ed0d40800000000000000
+      internalID: 5552348733175973622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doubt_tileset_21
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 40
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48fba0347de83bd0800000000000000
+      internalID: -2650107297418971062
       vertices: []
       indices: 
       edges: []

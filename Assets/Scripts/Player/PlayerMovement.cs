@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("HUD_LOG").GetComponent<TextSetter>().setText("Teste");
 
-        Debug.Log(GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand("loop."));
     }
 
     // Update is called once per frame
@@ -50,19 +49,32 @@ public class PlayerMovement : MonoBehaviour
             {
                 TriggerMovement(Vector3.down);
             }
-            if(Input.GetKey(KeyCode.D))
+            if(Input.GetKeyUp(KeyCode.D))
             {
-                TriggerMovement(Vector3.right);
+                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand("turn_right.");
+                //TriggerMovement(Vector3.right);
             }
             if(Input.GetKeyUp(KeyCode.Space))
             {
-                Debug.Log(GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand("move."));
+                
+                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand(PrologCommands.Move);
+                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand("loop.");
                 Vector2 newPrologPosition = GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().getPrologPlayerPosition();
                 Vector2 MapTransformation = GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>().getSpawnPoint();
-                Debug.Log(new Vector2(newPrologPosition.x-1 + MapTransformation.x, MapTransformation.y-1 + newPrologPosition.y));
-                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().updateUI();
+                Vector2 newPlayerPosition = new Vector2(newPrologPosition.x-1 + MapTransformation.x, MapTransformation.y-1 + newPrologPosition.y);
 
-                TriggerMovement(Vector3.up);
+                Vector2 direction =  newPlayerPosition - new Vector2(transform.position.x, transform.position.y);
+
+                if(direction.magnitude > 1)
+                {
+                    teleport(newPlayerPosition);
+                }
+                else
+                {
+                    TriggerMovement(direction);
+                }
+                
+                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().updateUI();
             }
         }
 
@@ -117,6 +129,11 @@ public class PlayerMovement : MonoBehaviour
         return "";
     }
 
+    private void teleport(Vector2 position)
+    {
+        transform.position = new Vector3(position.x, position.y);
+    }
+
     private IEnumerator MovePlayer(Vector3 direction)
     {
         isMoving = true;
@@ -127,8 +144,6 @@ public class PlayerMovement : MonoBehaviour
 
         origPos = transform.position;
         targetPos = origPos + direction;
-
-        Debug.Log(targetPos);
 
         var MapManager = GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>();
 

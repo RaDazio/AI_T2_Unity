@@ -77,6 +77,30 @@ public class TextToMap : MonoBehaviour
         GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().instantiateProlog();
     }
 
+    public void revealTile(Vector2 position)
+    {
+        List<GameObject> aux_know;
+        List<GameObject> aux_all;
+        GameObject aux_fog;
+
+        if(AllMapTiles.TryGetValue(position, out aux_all))
+        {
+            foreach (var item in aux_all)
+            {
+                item.SetActive(true);
+            } 
+            if(!KnowTiles.TryGetValue(position, out aux_know))
+            {
+                KnowTiles.Add(position, aux_all);
+            } 
+        }
+        if(FogTiles.TryGetValue(position, out aux_fog))
+        {
+            aux_fog.SetActive(false);
+        }
+        clearDoubt(position);
+    }
+
     public void clearTile(Vector2 position)
     {
         List<GameObject> aux;
@@ -94,18 +118,54 @@ public class TextToMap : MonoBehaviour
 
     public void setDoubt(char doubtChar, Vector2 position)
     {
+        List<GameObject> aux;
+        if(KnowTiles.TryGetValue(position, out aux))
+        {
+            return;
+        }
         foreach(var doubt in DoubtTiles)
         {
             if(doubtChar==doubt.tilechar)
             {
-                GameObject aux;
-                if(!Doubts.TryGetValue(position,out aux))
+                GameObject aux_2;
+                if(!Doubts.TryGetValue(position,out aux_2))
                 {
-                    Doubts.Add(position,  Instantiate(doubt.TileObject, position, Quaternion.identity, transform));
+                    GameObject o = Instantiate(doubt.TileObject, position, Quaternion.identity, transform);
+                    o.GetComponent<SpriteRenderer>().sortingOrder=99;
+                    Doubts.Add(position, o);
                 }
-                
             }
         }
+    }
+
+    public void clearDoubt(Vector2 position)
+    {
+        GameObject aux;
+        List<GameObject> listaux;
+        if(Doubts.TryGetValue(position, out aux))
+        {
+            Doubts.Remove(position);
+            Destroy(aux);
+        }
+        if(FogTiles.TryGetValue(position, out aux))
+        {
+            aux.SetActive(false);
+        }
+        if(AllMapTiles.TryGetValue(position, out listaux))
+        {
+            foreach(var obj in listaux)
+            {
+                obj.SetActive(true);
+            }
+        }
+    }
+    public void ClearAllDoubts()
+    {
+        foreach(var kvp in Doubts)
+        {
+            Destroy(kvp.Value);
+        }
+        Doubts.Clear();
     }
 
     public void SetAllActive(bool active)
@@ -285,7 +345,10 @@ public class TextToMap : MonoBehaviour
                         sortedTiles.Add(position, aux);
                     }
                     newmap+=aux;
-                    prologmap+=aux;
+                    if(aux=='X')
+                        prologmap+='.';
+                    else
+                        prologmap+=aux;
                 }
                 newmap+=rightSide;
                 prologmap+="'.\n";
@@ -362,28 +425,7 @@ public class TextToMap : MonoBehaviour
         }
     }
     
-    public void revealTile(Vector2 position)
-    {
-        List<GameObject> aux_know;
-        List<GameObject> aux_all;
-        GameObject aux_fog;
-
-        if(AllMapTiles.TryGetValue(position, out aux_all))
-        {
-            foreach (var item in aux_all)
-            {
-                item.SetActive(true);
-            } 
-            if(!AllMapTiles.TryGetValue(position, out aux_know))
-            {
-                KnowTiles.Add(position, aux_all);
-            } 
-        }
-        if(FogTiles.TryGetValue(position, out aux_fog))
-        {
-            aux_fog.SetActive(false);
-        }
-    }
+   
 
 
     public int GetMapWidht()
