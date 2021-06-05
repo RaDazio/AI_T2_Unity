@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 public class PrologController : MonoBehaviour
 {
-    public PrologProcess process;
+    PrologProcess process;
     public string pathToApi;
     
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class PrologController : MonoBehaviour
     public void instantiateProlog()
     {        
         process = new PrologProcess(Application.dataPath + pathToApi);
-        process.RunCommand("loop.");
+        //process.RunCommand("loop.");
         updateUI();
     }
 
@@ -50,12 +50,14 @@ public class PrologController : MonoBehaviour
         string value = Regex.Replace(Regex.Match(output,"\\(.*?\\)").ToString(),@"(\s+|\(|\))","");
         string[] values = Regex.Split(value,",");
 
-        
-        Player_Stats statsController = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Stats>();
-        statsController.UpdateLife(int.Parse(values[3]));
-        statsController.UpdateAmmo(int.Parse(values[4]));
-        statsController.updateScoreHUD(values[5]);
-
+        if(value!= null && value != "" && values.Length == 6) 
+        {
+            Player_Stats statsController = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Stats>();
+            statsController.UpdateLife(int.Parse(values[3]));
+            statsController.UpdateAmmo(int.Parse(values[4]));
+            statsController.updateScoreHUD(values[5]);
+        }
+            
  
         TextToMap mapController = GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>();
     
@@ -115,14 +117,32 @@ public class PrologController : MonoBehaviour
                 }
             }
         }
-        
-        
-
-        
-
     }
 
-    public Vector2 getPrologPlayerPosition()
+
+    public Vector2 getWorldPlayerNewPosition()
+    {
+        TextToMap mapController = GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>();
+        Vector2 spawn = mapController.getSpawnPoint();
+        Vector2 prologPosition = getPrologPlayerPosition();
+        return new Vector2(prologPosition.x-1 + spawn.x, spawn.y-1 + prologPosition.y);
+    }
+
+    public string getPrologPlayerDirection()
+    {
+        string output = getStringAgentStateUpdate();
+        string value = Regex.Replace(Regex.Match(output,"\\(.*?\\)").ToString(),@"(\s+|\(|\))","");
+        string[] values = Regex.Split(value,",");
+        Debug.Log(output);
+        return values[2];
+    }
+
+    public void runNextTurn()
+    {
+        process.RunCommand(PrologCommands.Loop);
+    }
+
+    private Vector2 getPrologPlayerPosition()
     {
         string output = getStringAgentStateUpdate();
         string value = Regex.Replace(Regex.Match(output,"\\(.*?\\)").ToString(),@"(\s+|\(|\))","");
@@ -130,5 +150,4 @@ public class PrologController : MonoBehaviour
 
         return new Vector2(int.Parse(values[0]),int.Parse(values[1]));
     }
-
 }

@@ -51,7 +51,8 @@ public class PrologProcess
     public string RunCommand(string text)
     {
         WriteInput(text);
-        return GetOutput();
+        string output = GetOutput();
+        return output;
     }
 
 }

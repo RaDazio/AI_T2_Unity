@@ -49,21 +49,19 @@ public class PlayerMovement : MonoBehaviour
             {
                 TriggerMovement(Vector3.down);
             }
-            if(Input.GetKeyUp(KeyCode.D))
+            if(Input.GetKey(KeyCode.D))
             {
-                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand("turn_right.");
-                //TriggerMovement(Vector3.right);
+                TriggerMovement(Vector3.right);
             }
             if(Input.GetKeyUp(KeyCode.Space))
             {
-                
-                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand(PrologCommands.Move);
-                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand("loop.");
-                Vector2 newPrologPosition = GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().getPrologPlayerPosition();
-                Vector2 MapTransformation = GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>().getSpawnPoint();
-                Vector2 newPlayerPosition = new Vector2(newPrologPosition.x-1 + MapTransformation.x, MapTransformation.y-1 + newPrologPosition.y);
+                PrologController prologController = GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>();
+                prologController.runNextTurn();
 
-                Vector2 direction =  newPlayerPosition - new Vector2(transform.position.x, transform.position.y);
+                StartCoroutine(TurnPlayer(prologController.getPrologPlayerDirection()));
+            
+                Vector2 newPlayerPosition =  prologController.getWorldPlayerNewPosition();
+                Vector2 direction = newPlayerPosition - new Vector2(transform.position.x, transform.position.y);
 
                 if(direction.magnitude > 1)
                 {
@@ -74,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
                     TriggerMovement(direction);
                 }
                 
-                GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().updateUI();
+                prologController.updateUI();
             }
         }
 
@@ -87,6 +85,35 @@ public class PlayerMovement : MonoBehaviour
             PlusTimeOnAnimation();
         }
     }
+
+    public IEnumerator TurnPlayer(string prolog_direction)
+    {
+        if(prolog_direction == "north")
+        {
+            animator_controler.SetBool("Up",true);
+            yield return new WaitForSecondsRealtime(0.01f);
+            animator_controler.SetBool("Up",false);
+        }
+        else if(prolog_direction == "east")
+        {
+            animator_controler.SetBool("Right",true);
+            yield return new WaitForSecondsRealtime(0.01f);
+            animator_controler.SetBool("Right",false);
+        }
+        else if(prolog_direction == "west")
+        {
+            animator_controler.SetBool("Left",true);
+            yield return new WaitForSecondsRealtime(0.01f);
+            animator_controler.SetBool("Left",false);
+        }
+        else if(prolog_direction == "south")
+        {
+            animator_controler.SetBool("Down",true);
+            yield return new WaitForSecondsRealtime(0.01f);
+            animator_controler.SetBool("Down",false);
+        }
+    }
+
 
     public void MinusTimeOnAnimation()
     {
@@ -139,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
         isMoving = true;
         string animationDirection = getAnimationName(direction);
         animator_controler.SetBool(animationDirection,true);
+        animator_controler.SetBool("Moving", true);
 
         float elapsedTime = 0;
 
@@ -159,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = targetPos;
         animator_controler.SetBool(animationDirection,false);
+        animator_controler.SetBool("Moving", false);
         isMoving=false;
         GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>().revealTile(targetPos);
     }

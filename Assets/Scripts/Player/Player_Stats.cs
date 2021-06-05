@@ -17,20 +17,7 @@ public class Player_Stats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.H) )
-        {
-            GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand(PrologCommands.TakeDamage);
-            GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().updateUI();
-        }
-        if(Input.GetKeyUp(KeyCode.J) )
-        {
-            
-        }
-        if(Input.GetKeyUp(KeyCode.L) )
-        {
-            GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().process.RunCommand(PrologCommands.Shoot);
-            GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>().updateUI();
-        }
+
     }
 
     public void UpdateLife(int totalLife)
