@@ -40,16 +40,18 @@
      <Compile Include="Assets\Scripts\UI\LifePanel.cs" />
      <Compile Include="Assets\Scripts\Map\TextToMap.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Stats.cs" />
+     <Compile Include="Assets\Scripts\Prolog\PrologController.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraScript.cs" />
      <Compile Include="Assets\Scripts\UI\ArrowPanel.cs" />
      <Compile Include="Assets\Scripts\Map\MapConfigurations.cs" />
      <Compile Include="Assets\Scripts\Map\DoubtTilesRep.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Map\TextMapping.cs" />
+     <Compile Include="Assets\Scripts\Prolog\PrologCommands.cs" />
      <Compile Include="Assets\Scripts\UI\TextSetter.cs" />
      <Compile Include="Assets\Scripts\UI\GameStartScript.cs" />
-     <Compile Include="Assets\Scripts\Prolog\PrologCommands.cs" />
-     <Compile Include="Assets\Scripts\Prolog\PrologController.cs" />
+     <Compile Include="Assets\Scripts\UI\MoneyPanel.cs" />
+     <None Include="Assets\Resources\PrologFiles\map.txt" />
      <None Include="Assets\Resources\map.txt" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Ferramentas/Unity/2020.3.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

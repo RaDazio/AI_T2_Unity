@@ -57,5 +57,9 @@ public class Player_Stats : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("HUD_SCORE").GetComponent<TextSetter>().setText("Score: " + score);
     }
-
+    
+    public void updateMoneyHUD(int money)
+    {
+        GameObject.FindGameObjectWithTag("HUD_MONEY").GetComponent<MoneyPanel>().updateMoney(money);
+    }
 }

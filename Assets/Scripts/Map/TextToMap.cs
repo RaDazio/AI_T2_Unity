@@ -351,7 +351,10 @@ public class TextToMap : MonoBehaviour
                         prologmap+=aux;
                 }
                 newmap+=rightSide;
-                prologmap+="'.\n";
+                if(j == 0)
+                    prologmap+="'.";
+                else
+                    prologmap+="'.\n";
             }      
             newmap = header+'\n'+newmap+footer;
 

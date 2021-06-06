@@ -50,12 +50,14 @@ public class PrologController : MonoBehaviour
         string value = Regex.Replace(Regex.Match(output,"\\(.*?\\)").ToString(),@"(\s+|\(|\))","");
         string[] values = Regex.Split(value,",");
 
-        if(value!= null && value != "" && values.Length == 6) 
+        Player_Stats statsController = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Stats>();
+        if(value!= null && value != "") 
         {
-            Player_Stats statsController = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Stats>();
+            
             statsController.UpdateLife(int.Parse(values[3]));
             statsController.UpdateAmmo(int.Parse(values[4]));
             statsController.updateScoreHUD(values[5]);
+            
         }
             
  
@@ -73,6 +75,7 @@ public class PrologController : MonoBehaviour
         
         mapController.ClearAllDoubts();
 
+        int collectedTreasures = 0;
         for (int i = 0; i < matches.Count; i++)
         {
             var newmatches = Regex.Matches(values[i],"\\d+,\\d+");
@@ -112,11 +115,17 @@ public class PrologController : MonoBehaviour
                     case 7:
                         mapController.clearDoubt(worldPoint);
                         break;
+                    case 8:
+                        mapController.clearTile(worldPoint);
+                        collectedTreasures++;
+                        break;
                     default:
                         continue;
                 }
             }
         }
+
+        statsController.updateMoneyHUD(300*collectedTreasures);
     }
 
 
@@ -133,7 +142,6 @@ public class PrologController : MonoBehaviour
         string output = getStringAgentStateUpdate();
         string value = Regex.Replace(Regex.Match(output,"\\(.*?\\)").ToString(),@"(\s+|\(|\))","");
         string[] values = Regex.Split(value,",");
-        Debug.Log(output);
         return values[2];
     }
 

@@ -18,7 +18,7 @@ public class PrologProcess
         prologProcess = new Process();
         
         prologProcess.StartInfo.FileName = "swipl";
-        prologProcess.StartInfo.Arguments = apiPath + " --win-app";
+        prologProcess.StartInfo.Arguments = apiPath;
         prologProcess.StartInfo.RedirectStandardInput = true; 
         prologProcess.StartInfo.RedirectStandardOutput = true;
         prologProcess.StartInfo.UseShellExecute = false;

@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
         GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>().revealTile(spawn);
 
         GameObject.FindGameObjectWithTag("HUD_LOG").GetComponent<TextSetter>().setText("Teste");
+        PrologController prologController = GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>();
+        // prologController.runNextTurn();
+        prologController.updateUI();
 
     }
 
@@ -67,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     teleport(newPlayerPosition);
                 }
-                else
+                else if (direction.magnitude > 0)
                 {
                     TriggerMovement(direction);
                 }
@@ -91,25 +94,25 @@ public class PlayerMovement : MonoBehaviour
         if(prolog_direction == "north")
         {
             animator_controler.SetBool("Up",true);
-            yield return new WaitForSecondsRealtime(0.01f);
+            yield return new WaitForSecondsRealtime(0.1f);
             animator_controler.SetBool("Up",false);
         }
         else if(prolog_direction == "east")
         {
             animator_controler.SetBool("Right",true);
-            yield return new WaitForSecondsRealtime(0.01f);
+            yield return new WaitForSecondsRealtime(0.1f);
             animator_controler.SetBool("Right",false);
         }
         else if(prolog_direction == "west")
         {
             animator_controler.SetBool("Left",true);
-            yield return new WaitForSecondsRealtime(0.01f);
+            yield return new WaitForSecondsRealtime(0.1f);
             animator_controler.SetBool("Left",false);
         }
         else if(prolog_direction == "south")
         {
             animator_controler.SetBool("Down",true);
-            yield return new WaitForSecondsRealtime(0.01f);
+            yield return new WaitForSecondsRealtime(0.1f);
             animator_controler.SetBool("Down",false);
         }
     }
