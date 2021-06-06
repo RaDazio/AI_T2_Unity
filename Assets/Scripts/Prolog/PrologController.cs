@@ -119,6 +119,9 @@ public class PrologController : MonoBehaviour
                         mapController.clearTile(worldPoint);
                         collectedTreasures++;
                         break;
+                    case 9:
+                        mapController.clearTile(worldPoint);
+                        break;
                     default:
                         continue;
                 }

@@ -46,11 +46,12 @@
      <Compile Include="Assets\Scripts\Map\MapConfigurations.cs" />
      <Compile Include="Assets\Scripts\Map\DoubtTilesRep.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\UI\MoneyPanel.cs" />
      <Compile Include="Assets\Scripts\Map\TextMapping.cs" />
      <Compile Include="Assets\Scripts\Prolog\PrologCommands.cs" />
      <Compile Include="Assets\Scripts\UI\TextSetter.cs" />
      <Compile Include="Assets\Scripts\UI\GameStartScript.cs" />
-     <Compile Include="Assets\Scripts\UI\MoneyPanel.cs" />
+     <None Include="Assets\Resources\PrologFiles\map_2.txt" />
      <None Include="Assets\Resources\PrologFiles\map.txt" />
      <None Include="Assets\Resources\map.txt" />
     <Reference Include="UnityEngine">
