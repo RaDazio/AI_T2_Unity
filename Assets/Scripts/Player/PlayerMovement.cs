@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("MapManager").GetComponent<TextToMap>().revealTile(spawn);
 
-        GameObject.FindGameObjectWithTag("HUD_LOG").GetComponent<TextSetter>().setText("Teste");
+        
         PrologController prologController = GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>();
         // prologController.runNextTurn();
         prologController.updateUI();
@@ -58,24 +58,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if(Input.GetKeyUp(KeyCode.Space))
             {
-                PrologController prologController = GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>();
-                prologController.runNextTurn();
-
-                StartCoroutine(TurnPlayer(prologController.getPrologPlayerDirection()));
-            
-                Vector2 newPlayerPosition =  prologController.getWorldPlayerNewPosition();
-                Vector2 direction = newPlayerPosition - new Vector2(transform.position.x, transform.position.y);
-
-                if(direction.magnitude > 1)
-                {
-                    teleport(newPlayerPosition);
-                }
-                else if (direction.magnitude > 0)
-                {
-                    TriggerMovement(direction);
-                }
-                
-                prologController.updateUI();
+                StartCoroutine(Run());
             }
         }
 
@@ -86,6 +69,33 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.KeypadMinus) ||Input.GetKeyUp(KeyCode.Minus))
         {
             PlusTimeOnAnimation();
+        }
+    }
+
+    public IEnumerator Run()
+    {
+        while(true)
+        {
+            PrologController prologController = GameObject.FindGameObjectWithTag("PrologController").GetComponent<PrologController>();
+            prologController.runNextTurn();
+            GameObject.FindGameObjectWithTag("HUD_LOG").GetComponent<TextSetter>().setText(prologController.GetAgentMode());
+
+            StartCoroutine(TurnPlayer(prologController.getPrologPlayerDirection()));
+        
+            Vector2 newPlayerPosition =  prologController.getWorldPlayerNewPosition();
+            Vector2 direction = newPlayerPosition - new Vector2(transform.position.x, transform.position.y);
+
+            if(direction.magnitude > 1)
+            {
+                teleport(newPlayerPosition);
+            }
+            else if (direction.magnitude > 0)
+            {
+                TriggerMovement(direction);
+            }
+            
+            prologController.updateUI();
+            yield return new WaitForSecondsRealtime(0.2f);
         }
     }
 

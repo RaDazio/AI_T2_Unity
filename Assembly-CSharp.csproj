@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\UI\GameStartScript.cs" />
      <None Include="Assets\Resources\PrologFiles\map_2.txt" />
      <None Include="Assets\Resources\PrologFiles\map.txt" />
+     <None Include="Assets\Resources\map copy.txt" />
      <None Include="Assets\Resources\map.txt" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Ferramentas/Unity/2020.3.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

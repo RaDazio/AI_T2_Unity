@@ -13,6 +13,8 @@ public class PrologCommands
     public static string GetAgentState { get { return (new PrologCommands("get_agent_state.")).Value; }}
 
     public static string Loop { get { return (new PrologCommands("loop.")).Value; }} 
+
+    public static string GetAgentMode { get { return (new PrologCommands("get_agent_mode.")).Value; }} 
     
 
 }

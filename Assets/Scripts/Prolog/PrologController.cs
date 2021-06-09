@@ -161,4 +161,10 @@ public class PrologController : MonoBehaviour
 
         return new Vector2(int.Parse(values[0]),int.Parse(values[1]));
     }
+
+    public string GetAgentMode()
+    {
+
+        return process.RunCommand(PrologCommands.GetAgentMode).Replace("true","");
+    }
 }

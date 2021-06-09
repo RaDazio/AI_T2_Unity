@@ -53,5 +53,7 @@
         "temp/":true,
         "Temp/":true
     },
-    "python.pythonPath": "D:\\Ferramentas\\Anaconda\\envs\\rstudio\\python.exe"
+    "python.pythonPath": "D:\\Ferramentas\\Anaconda\\envs\\rstudio\\python.exe",
+    "prolog.executablePath": "",
+    "prolog.linter.run": "never"
 }
